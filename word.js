@@ -5,17 +5,28 @@ var Letter = require("./letter.js");
 var Word = function() {
     // this.letters will hold all letter objects that comprise the word
     this.letters = [];
-    // a method that displays all the letters as a word.
+    // method that displays all the letters as a word.
     this.displayWord = () => {
         let word = ""
         for (let i=0; i < this.letters.length; i++){
-            word += this.letters[i];
+            word += this.letters[i] + " ";
         }
         return(word);
     };
+    // method to check if letter in contained in the word
     this.chkLtr = (ch) => {
         for (let i=0; i < this.letters.length; i++){
             this.letters[i].chkLtr(ch);
+        }
+    }
+    // method to add a word as an array letter contructors
+    this.addWord = (word) => {
+        for (let i=0; i < word.length; i++) {
+            this.letters.push(new Letter(word[i]));
+            if ( word[i] === " ") {
+                this.letters[i].ltrGuessed = true;
+            }
+
         }
     }
 };

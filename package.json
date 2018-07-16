@@ -1,0 +1,23 @@
+{
+  "name": "WordGuess-Node-App",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vdelariva/WordGuess-Node-App.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vdelariva/WordGuess-Node-App/issues"
+  },
+  "homepage": "https://github.com/vdelariva/WordGuess-Node-App#readme",
+  "dependencies": {
+    "inquirer": "^6.0.0"
+  }
+}

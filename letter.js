@@ -1,13 +1,15 @@
 var Letter = function (ltr) {
     this.ltr = ltr;
-    this.blankLtr = "_";
+    // This isn't necessary, could return "_", but left in place in case you want to change the character to display unguessed letter
+    // this.blankLtr = "_"; 
     this.ltrGuessed = false;
     this.toString = () => {
         if (this.ltrGuessed){
             return this.ltr;
         }
         else {
-            return this.blankLtr;
+            return "_";
+            // return this.blankLtr;
         }
     };
     this.chkLtr = (ch) => {
