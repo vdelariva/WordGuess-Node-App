@@ -11,13 +11,17 @@ var Word = function() {
         for (let i=0; i < this.letters.length; i++){
             word += this.letters[i] + " ";
         }
-        return(word);
+        return(word.toUpperCase());
     };
     // method to check if letter in contained in the word
     this.chkLtr = (ch) => {
+        let ltrFound = false;
         for (let i=0; i < this.letters.length; i++){
-            this.letters[i].chkLtr(ch);
+            if (this.letters[i].chkLtr(ch)){
+                ltrFound = true;
+            }
         }
+        return ltrFound;
     }
     // method to add a word as an array letter contructors
     this.addWord = (word) => {
