@@ -10,8 +10,10 @@ var possibleWords = ["florence", "paris", "madrid", "rome", "singapore", "dubai"
 
 const maxGuesses = 10;
 var numGuesses = maxGuesses;
-
 var randomWord;
+
+console.log(chalk.blue("\nWelcome to Word Guess Game node.js style!"));
+console.log("Guess the world city name in 10 guesses or less.\n");
 
 resetGame();
 
@@ -25,13 +27,13 @@ function playGame() {
         }
         else {
             console.log(chalk.red(`You ran out of guesses. Too bad, you lose!\n`));
-            console.log("Next word:")
+            // console.log("Next word:")
             resetGame();
         }
     }
     else {
         console.log(chalk.green(`Congratulations, you got it right!\n`));
-        console.log("Next word:")
+        // console.log("Next word:")
         resetGame();
     }
 }
@@ -72,10 +74,25 @@ function getLetter () {
 // Resets the random word and starts the game
 
 function resetGame() {
-    // Select a random word & add it to Word contructor
-    randomWord = new Word();
-    randomWord.addWord(possibleWords[Math.floor(Math.random()*possibleWords.length)])
-    console.log(`\n${randomWord.displayWord()}\n`);
-    numGuesses = maxGuesses;
-    playGame();
+
+    inquirer.prompt ([
+        {
+            type: "confirm",
+            name: "status",
+            message: "Play Game?"
+        }
+    ]).then (function(response) {
+        if (response.status === true){
+            // Play the game!
+            // Select a random word & add it to Word contructor
+            randomWord = new Word();
+            randomWord.addWord(possibleWords[Math.floor(Math.random()*possibleWords.length)])
+            console.log(`\n${randomWord.displayWord()}\n`);
+            numGuesses = maxGuesses;
+            playGame();
+        }
+        else {
+            console.log(chalk.blue("\nThanks for playing!\n"));
+        }
+    });
 }
