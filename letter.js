@@ -23,13 +23,6 @@ var Letter = function (ltr) {
     };
 
 }
-// var alpha = new Letter ("a");
-
-// console.log(alpha + "");
-// console.log(alpha.chkLtr("d"));
-
-// console.log(alpha.chkLtr("a"));
-// console.log(alpha + "");
 
 // exporting Letter constructor
 module.exports = Letter;

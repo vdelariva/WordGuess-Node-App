@@ -30,26 +30,18 @@ var Word = function() {
             if ( word[i] === " ") {
                 this.letters[i].ltrGuessed = true;
             }
-
         }
     }
+    // method to check if all letters in the word have been guessed
+    this.wordFound = () => {
+        var found = true;
+        
+        for (let i=0; i < this.letters.length; i++){
+            found = found && this.letters[i].ltrGuessed;
+        }
+        return found;
+    }
 };
-
-// var d = new Letter("d");
-// var o = new Letter("o");
-// var g = new Letter("g");
-
-// var dog = new Word();
-
-// dog.letters.push(d);
-// dog.letters.push(o);
-// dog.letters.push(g);
-
-// console.log(dog.displayWord());
-
-// dog.chkLtr("d");
-
-// console.log(dog.displayWord());
   
 // exporting Word constructor. We will require it in index.js
 module.exports = Word;
