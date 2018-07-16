@@ -8,36 +8,31 @@ var possibleWords = ["florence", "paris", "madrid", "rome", "singapore", "dubai"
 "johannesburg", "istanbul", "warsaw", "jakarta", "kuala lumpur", "mexico city",
 "hong kong", "chicago", "seoul", "los angeles", "mumbai"]
 
-const maxGuesses = 3;
+const maxGuesses = 10;
 var numGuesses = maxGuesses;
 
-// Select a random word & add it to Word contructor
-var randomWord = new Word();
-getNewWord();
-// randomWord.addWord(possibleWords[Math.floor(Math.random()*possibleWords.length)])
+var randomWord;
 
-console.log(JSON.stringify(randomWord));
+resetGame();
 
-console.log(`\n${randomWord.displayWord()}\n`);
-
-playGame();
-
-// Start the word game
+// Functions:
+//
+// Play the word game
 function playGame() {
     if (!randomWord.wordFound()) {
         if (numGuesses > 0) {
             getLetter();
         }
         else {
-            console.log (chalk.red(`You ran out of guesses. Too bad, you lose!`));
-            getNewWord();
-            numGuesses = maxGuesses;
+            console.log(chalk.red(`You ran out of guesses. Too bad, you lose!\n`));
+            console.log("Next word:")
+            resetGame();
         }
     }
     else {
-        console.log(chalk.green(`Congratulations, you got it right!`));
-        getNewWord();
-        numGuesses = maxGuesses;
+        console.log(chalk.green(`Congratulations, you got it right!\n`));
+        console.log("Next word:")
+        resetGame();
     }
 }
 
@@ -72,8 +67,13 @@ function getLetter () {
     });
 }
 
-// Get a new random word
+// Resets the random word and starts the game
 
-function getNewWord() {
+function resetGame() {
+    // Select a random word & add it to Word contructor
+    randomWord = new Word();
     randomWord.addWord(possibleWords[Math.floor(Math.random()*possibleWords.length)])
+    console.log(`\n${randomWord.displayWord()}\n`);
+    numGuesses = maxGuesses;
+    playGame();
 }
