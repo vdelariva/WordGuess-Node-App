@@ -53,16 +53,18 @@ function getLetter () {
         }
     ])
     .then(function(response) {
+        // Convert letter to lowercase, check if letter is found in the word, if found, let player know they guessed correctly
         if (randomWord.chkLtr(response.letter.toLowerCase())){
             console.log(chalk.green(`\nCorrect!!!\n`));
         }
         else {
+            // else decrement the number of remaining guesses, alert player they guessed incorrectly
             numGuesses--
             console.log(chalk.red(`\nIncorrect!!!\n`));
             console.log(`Remaining Guesses: ${numGuesses}\n`);
         }
         console.log(`${randomWord.displayWord()}\n`);
-
+        // Continue playing game
         playGame();
     });
 }
